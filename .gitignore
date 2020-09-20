@@ -1,0 +1,8 @@
+# Folders
+lib
+node_modules
+
+# Files
+.env
+run.cmd
+run.docker.cmd

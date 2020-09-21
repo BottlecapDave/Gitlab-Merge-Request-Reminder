@@ -21,7 +21,7 @@ export namespace Slack {
                 type: "section",
                 text: {
                     type: "mrkdwn",
-                    text: `*<${request.web_url}|${request.title}>*\n${request.author.name} | opened ${moment(request.created_at).fromNow()}`
+                    text: `*<${request.web_url}|(${request.project.name}) ${request.title}>*\n${request.author.name} | opened ${moment(request.created_at).fromNow()}`
                 }
             })
         }

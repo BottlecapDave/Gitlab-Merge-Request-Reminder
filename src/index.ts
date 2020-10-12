@@ -6,7 +6,10 @@ async function run() {
         projectIds: (process.env.GITLAB_PROJECT_IDS?.trim() || "").split(','),
         includeWorkInProgress: process.env.INCLUDE_WIP?.trim() !== "false",
         includeDraft: process.env.INCLUDE_DRAFT?.trim() !== "false",
-        slackWebhookUrl: process.env.SLACK_WEBHOOK_URL?.trim() as string,
+        slack: {
+            webhookUrl: process.env.SLACK_WEBHOOK_URL?.trim() as string,
+            target: process.env.SLACK_TARGET?.trim() as string || '@here'
+        }
     };
 
     if (!config.gitlabAccessToken) {
@@ -17,8 +20,10 @@ async function run() {
         throw new Error(`INCLUDE_WIP was not specified`);
     } else if (!config.includeDraft) {
         throw new Error(`INCLUDE_DRAFT was not specified`);
-    } else if (!config.slackWebhookUrl) {
+    } else if (!config.slack.webhookUrl) {
         throw new Error(`SLACK_WEBHOOK_URL was not specified`);
+    } else if (!config.slack.target) {
+        throw new Error(`SLACK_TARGET was not specified`);
     }
 
     return sendReminder(config);

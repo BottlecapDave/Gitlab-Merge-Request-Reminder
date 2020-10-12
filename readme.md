@@ -11,6 +11,7 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 | INCLUDE_WIP          | Determines if work in progress merge requests should be included. This is true by default.                  | `true` or `false` |
 | INCLUDE_DRAFT        | Determines if draft merge requests should be included. This is true by default.                            | `true` or `false` |
 | SLACK_WEBHOOK_URL    | The URL of the slack incoming webhook to send the notification to.                                            |                |
+| SLACK_TARGET         | The target of the slack message. This is `@here` by default. | `@here` |
 
 ## Docker
 

@@ -2,14 +2,19 @@ import { IGitlabMergeRequest } from "../gitlab";
 import * as moment from 'moment';
 import axios, { AxiosRequestConfig } from "axios";
 
+export interface ISlackConfig {
+    webhookUrl: string;
+    target: string;
+}
+
 export namespace Slack {
-    export async function sendReminder(webhookUrl: string, mergeRequests: IGitlabMergeRequest[]) {
+    export async function sendReminder(config: ISlackConfig, mergeRequests: IGitlabMergeRequest[]) {
         const blocks = [];
         blocks.push({
             type: "section",
             text: {
                 type: "mrkdwn",
-                text: "@here Looks like there are some open merge requests..."
+                text: `${config.target} Looks like there are some open merge requests...`
             }
         },
         {
@@ -31,7 +36,7 @@ export namespace Slack {
         };
 
         await axios.post(
-            webhookUrl,
+            config.webhookUrl,
             {
                 text: "Looks like there are some open merge requests...",
                 blocks

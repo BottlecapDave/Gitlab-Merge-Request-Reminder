@@ -7,5 +7,8 @@ cd ../../
 docker build -t bottlecapdave/gitlab-merge-request-reminder:%TAG% .
 docker push bottlecapdave/gitlab-merge-request-reminder:%TAG%
 
+docker build -t bottlecapdave/gitlab-merge-request-reminder:latest .
+docker push bottlecapdave/gitlab-merge-request-reminder:latest
+
 cd _build/scripts
 del tag.txt

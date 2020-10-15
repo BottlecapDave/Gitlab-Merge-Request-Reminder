@@ -16,9 +16,9 @@ async function run() {
         throw new Error(`GITLAB_ACCESS_TOKEN was not specified`);
     } else if (!config.projectIds) {
         throw new Error(`GITLAB_PROJECT_IDS was not specified`);
-    } else if (!config.includeWorkInProgress) {
+    } else if (config.includeWorkInProgress == null) {
         throw new Error(`INCLUDE_WIP was not specified`);
-    } else if (!config.includeDraft) {
+    } else if (config.includeDraft == null) {
         throw new Error(`INCLUDE_DRAFT was not specified`);
     } else if (!config.slack.webhookUrl) {
         throw new Error(`SLACK_WEBHOOK_URL was not specified`);

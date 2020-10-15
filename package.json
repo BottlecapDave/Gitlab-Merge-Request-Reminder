@@ -6,7 +6,7 @@
   "scripts": {
     "remind": "ts-node ./src/index.ts",
     "build": "tsc -p ./src -d",
-    "build-docker": "docker build -t bottlecapdave/gitlab-merge-request-reminder:%TAG% . && docker push bottlecapdave/gitlab-merge-request-reminder"
+    "build-docker": "(cd ./_build/scripts && docker.cmd)"
   },
   "author": "David Kendall",
   "license": "ISC",

@@ -38,6 +38,10 @@ merge-request-reminder:
 
 ## Build
 
+Tag the commit in the form of `v{MAJOR}.{Minor}.{Bugfix}` and then run `npm run build-docker`
+
+e.g.
 ```
-SET TAG=v1.0.0 && npm run build-docker
+git tag v1.0.0
+npm run build-docker
 ```

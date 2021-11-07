@@ -12,8 +12,8 @@
     "@semantic-release/github",
     [
       "@semantic-release/exec", {
-        "prepareCmd" : "(cd ./reminder && docker build -t bottlecapdave/gitlab-merge-request-reminder:latest .)",
-        "publishCmd": "(cd ./reminder && docker push -t bottlecapdave/gitlab-merge-request-reminder:latest) && (cd ./reminder && docker push -t bottlecapdave/gitlab-merge-request-reminder:${nextRelease.version})"
+        "prepareCmd" : "npm run docker-build",
+        "publishCmd": "TAG=${nextRelease.version} npm run docker-release"
       }
     ],
     [

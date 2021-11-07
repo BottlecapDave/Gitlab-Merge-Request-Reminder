@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "commit": "cz",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "docker-build": "(cd ./reminder && docker build -t bottlecapdave/gitlab-merge-request-reminder:latest .)",
+    "docker-release": "(cd ./reminder && docker push -t bottlecapdave/gitlab-merge-request-reminder:latest) && (cd ./reminder && docker push -t bottlecapdave/gitlab-merge-request-reminder:$TAG)"
   },
   "repository": {
     "type": "git",

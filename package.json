@@ -1,0 +1,40 @@
+{
+  "name": "gitlab-merge-request-reminder",
+  "version": "1.0.0",
+  "description": "Sends reminders of open merge requests in GitLab",
+  "main": "index.js",
+  "scripts": {
+    "commit": "cz",
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/issues"
+  },
+  "homepage": "https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-eslint": "^3.0.9",
+    "cz-customizable": "^6.3.0",
+    "husky": "^4.3.8",
+    "semantic-release": "^18.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  }
+}

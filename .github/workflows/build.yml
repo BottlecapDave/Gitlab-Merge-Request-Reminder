@@ -16,7 +16,5 @@ jobs:
         uses: asdf-vm/actions/install@v1
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release -- --dry-run
+      - name: Build Image
+        run: npm run docker-build

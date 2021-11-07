@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "remind": "ts-node ./src/index.ts",
-    "build": "tsc -p ./src -d",
-    "build-docker": "(cd ./_build/scripts && docker.cmd)"
+    "build": "tsc -p ./src -d"
   },
   "author": "David Kendall",
   "license": "ISC",

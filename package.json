@@ -7,7 +7,7 @@
     "commit": "cz",
     "release": "semantic-release",
     "docker-build": "(cd ./reminder && docker build -t bottlecapdave/gitlab-merge-request-reminder:latest .)",
-    "docker-release": "(cd ./reminder && docker push bottlecapdave/gitlab-merge-request-reminder:latest) && (cd ./reminder && docker push bottlecapdave/gitlab-merge-request-reminder:$TAG)"
+    "docker-release": "(cd ./reminder && docker tag bottlecapdave/gitlab-merge-request-reminder:latest bottlecapdave/gitlab-merge-request-reminder:$TAG && docker push bottlecapdave/gitlab-merge-request-reminder:latest && docker push bottlecapdave/gitlab-merge-request-reminder:$TAG)"
   },
   "repository": {
     "type": "git",

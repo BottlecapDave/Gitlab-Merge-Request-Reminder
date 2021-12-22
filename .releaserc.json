@@ -18,7 +18,7 @@
     ],
     [
       "@semantic-release/git", {
-        "assets": ["package.json", "CHANGELOG.md", "./custom_components/first_bus/manifest.json"],
+        "assets": ["package.json", "CHANGELOG.md"],
         "message": "release: Released v${nextRelease.version} [skip ci]"
       }
     ]

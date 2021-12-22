@@ -38,10 +38,8 @@ merge-request-reminder:
 
 ## Build
 
-Tag the commit in the form of `v{MAJOR}.{Minor}.{Bugfix}` and then run `npm run build-docker`
+You can run `npm run docker-build` to build a local docker image, which can then be run locally.
 
-e.g.
-```
-git tag v1.0.0
-npm run docker-build
-```
+## Releases
+
+To release a new version, merge into `main`. The github CI will then create a release based on the commitizen messages.

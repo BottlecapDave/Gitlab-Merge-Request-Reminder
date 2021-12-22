@@ -43,5 +43,5 @@ Tag the commit in the form of `v{MAJOR}.{Minor}.{Bugfix}` and then run `npm run 
 e.g.
 ```
 git tag v1.0.0
-npm run build-docker
+npm run docker-build
 ```

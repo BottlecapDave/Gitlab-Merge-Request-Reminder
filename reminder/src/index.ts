@@ -29,4 +29,7 @@ async function run() {
     return sendReminder(config);
 }
 
-run();
+run().catch(err => {
+    console.error('ERROR', err);
+    process.exit(-1);
+});

@@ -19,6 +19,7 @@ export interface IGitlabMergeRequestRequest {
     projectIds: string[];
     includeWorkInProgress: boolean;
     includeDraft: boolean;
+    gitlabBaseURL: string;
 }
 
 export namespace Gitlab {
@@ -32,14 +33,14 @@ export namespace Gitlab {
 
         const allRequests: IGitlabMergeRequest[] = [];
         for (const projectId of request.projectIds) {
-            const projectResp = await axios.get(`https://gitlab.com/api/v4/projects/${projectId}`, requestConfig);
+            const projectResp = await axios.get(`${request.gitlabBaseURL}/api/v4/projects/${projectId}`, requestConfig);
             if (projectResp.status === 404) {
                 throw new Error(`Failed to find project '${projectId}'`);
             }
 
             const project = projectResp.data;
-            const resp = await axios.get(`https://gitlab.com/api/v4/projects/${projectId}/merge_requests?state=opened&scope=all&sort=asc`, requestConfig);
-        
+            const resp = await axios.get(`${request.gitlabBaseURL}/api/v4/projects/${projectId}/merge_requests?state=opened&scope=all&sort=asc`, requestConfig);
+
             const mergeRequests: IGitlabMergeRequest[] = resp.data || [];
             allRequests.push(...mergeRequests.filter(mr => request.includeWorkInProgress || mr.title.startsWith("WIP:") === false)
                                              .filter(mr => request.includeDraft || mr.title.startsWith("Draft:") === false)

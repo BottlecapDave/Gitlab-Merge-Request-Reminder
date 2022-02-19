@@ -6,6 +6,7 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 
 | Variable             | Details                                                                           | Example Values |
 | -------------------- | --------------------------------------------------------------------------------- | -------------- |
+| GITLAB_URL           | The URL of the Gitlab server. Defaults to `https://gitlab.com`                    | `https://gitlab.company.com`               |
 | GITLAB_ACCESS_TOKEN  | The access token for the GitLab repository. This needs at least `read_api` access and be done by following the [Gitlab instructions](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html). |                |
 | GITLAB_PROJECT_IDS   | The GitLab project ids the merge requests are for. This should be comma separated (e.g. 12345,678910) | `12345,678910` |
 | INCLUDE_WIP          | Determines if work in progress merge requests should be included. This is true by default.                  | `true` or `false` |

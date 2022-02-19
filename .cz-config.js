@@ -1,8 +1,7 @@
 var scopes = [
-  'api-client',
-  'sensor', 
-  'binary-sensor', 
-  'config'
+  'gitlab',
+  'slack', 
+  'docker'
 ]
 
 module.exports = {

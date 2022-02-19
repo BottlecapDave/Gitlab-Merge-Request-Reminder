@@ -16,6 +16,8 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 
 ## Docker
 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bottlecapdave/gitlab-merge-request-reminder)
+
 This is available as a docker image, available on [docker hub](https://hub.docker.com/repository/docker/bottlecapdave/gitlab-merge-request-reminder).
 
 ## Example Uses

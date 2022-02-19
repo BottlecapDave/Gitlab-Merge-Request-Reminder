@@ -3,6 +3,7 @@ import { sendReminder, IReminderRequest } from "./service";
 async function run() {
     var config: IReminderRequest = {
         gitlabAccessToken: process.env.GITLAB_ACCESS_TOKEN?.trim() as string,
+        gitlabBaseURL: process.env.GITLAB_URL?.trim() as string || "https://gitlab.com",
         projectIds: (process.env.GITLAB_PROJECT_IDS?.trim() || "").split(','),
         includeWorkInProgress: process.env.INCLUDE_WIP?.trim() !== "false",
         includeDraft: process.env.INCLUDE_DRAFT?.trim() !== "false",

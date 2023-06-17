@@ -1,5 +1,7 @@
 # GitLab Merge Request Reminder
 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bottlecapdave/gitlab-merge-request-reminder) [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bottlecapdave)
+
 Sends a notification to a Slack webhook highlighting open merge requests for a given GitLab repository. If no merge requests are open, then no notification will be sent.
 
 ## Environment Variables
@@ -15,8 +17,6 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 | SLACK_TARGET         | The target of the slack message. This is `@here` by default. | `@here` |
 
 ## Docker
-
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bottlecapdave/gitlab-merge-request-reminder)
 
 This is available as a docker image, available on [docker hub](https://hub.docker.com/repository/docker/bottlecapdave/gitlab-merge-request-reminder).
 

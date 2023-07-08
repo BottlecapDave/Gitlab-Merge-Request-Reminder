@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - develop
+env:
+  TEST_GITLAB_ACCESS_TOKEN: ${{ secrets.TEST_GITLAB_ACCESS_TOKEN }}
+  TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
+  TEST_SLACK_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
 jobs:
   build:
     name: Build
@@ -18,3 +22,18 @@ jobs:
         run: npm ci
       - name: Build Image
         run: npm run docker-build
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1
+      - name: Install dependencies
+        run: (cd reminder && npm ci)
+      - name: Run tests Image
+        run: (cd reminder && npm run test)
+          

@@ -1,4 +1,6 @@
-import { sendReminder, IReminderRequest } from "./service";
+import { GitlabService } from "./gitlabService";
+import { SlackService } from "./notifiers/slackService";
+import { IReminderRequest, ReminderService } from "./reminderService";
 
 async function run() {
     var config: IReminderRequest = {
@@ -7,6 +9,7 @@ async function run() {
         projectIds: (process.env.GITLAB_PROJECT_IDS?.trim() || "").split(','),
         includeWorkInProgress: process.env.INCLUDE_WIP?.trim() !== "false",
         includeDraft: process.env.INCLUDE_DRAFT?.trim() !== "false",
+        mandatoryLabels: (process.env.GITLAB_MANDATORY_LABELS?.trim() || "").split(','),
         slack: {
             webhookUrl: process.env.SLACK_WEBHOOK_URL?.trim() as string,
             target: process.env.SLACK_TARGET?.trim() as string || '@here'
@@ -27,7 +30,11 @@ async function run() {
         throw new Error(`SLACK_TARGET was not specified`);
     }
 
-    return sendReminder(config);
+    const slackService = new SlackService();
+    const gitlabService = new GitlabService();
+    const reminderService = new ReminderService(gitlabService, slackService);
+
+    return reminderService.sendReminder(config);
 }
 
 run().catch(err => {

@@ -1,4 +1,4 @@
-import { IGitlabMergeRequest } from "../gitlab";
+import { IGitlabMergeRequest } from "../gitlabService";
 import * as moment from 'moment';
 import axios, { AxiosRequestConfig } from "axios";
 
@@ -7,8 +7,8 @@ export interface ISlackConfig {
     target: string;
 }
 
-export namespace Slack {
-    export async function sendReminder(config: ISlackConfig, mergeRequests: IGitlabMergeRequest[]) {
+export class SlackService {
+    async sendReminder(config: ISlackConfig, mergeRequests: IGitlabMergeRequest[]) {
         const blocks = [];
         blocks.push({
             type: "section",

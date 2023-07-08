@@ -43,7 +43,7 @@ export class GitlabService {
 
             const project = projectResp.data;
             const resp = await axios.get(`${request.gitlabBaseURL}/api/v4/projects/${projectId}/merge_requests?state=opened&scope=all&sort=asc`, requestConfig);
-            if (projectResp.status === 403) {
+            if (resp.status === 403) {
                 throw new Error(`Not authorised to see merge requests for project '${projectId}'`);
             }
 

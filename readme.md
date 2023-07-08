@@ -13,7 +13,7 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 | GITLAB_PROJECT_IDS   | The GitLab project ids the merge requests are for. This should be comma separated (e.g. 12345,678910) | `12345,678910` |
 | INCLUDE_WIP          | Determines if work in progress merge requests should be included. This is true by default.                  | `true` or `false` |
 | INCLUDE_DRAFT        | Determines if draft merge requests should be included. This is true by default.                            | `true` or `false` |
-| GITLAB_MANDATORY_LABELS | The labels that merge requests must have assigned to them. This should be comma separated (e.g. mandatory-label-1,mandatory-label-2) | `mandatory-label-1,mandatory-label-2` |
+| GITLAB_MANDATORY_LABELS | The labels that merge requests must have assigned to them. All labels must be present. This should be comma separated (e.g. mandatory-label-1,mandatory-label-2) | `mandatory-label-1,mandatory-label-2` |
 | SLACK_WEBHOOK_URL    | The URL of the slack incoming webhook to send the notification to.                                            |                |
 | SLACK_TARGET         | The target of the slack message. This is `@here` by default. | `@here` |
 

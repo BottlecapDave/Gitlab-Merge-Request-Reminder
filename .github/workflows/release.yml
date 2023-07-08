@@ -6,6 +6,7 @@ on:
 env:
   TEST_GITLAB_ACCESS_TOKEN: ${{ secrets.TEST_GITLAB_ACCESS_TOKEN }}
   TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
+  TEST_SLACK_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
 jobs:
   test:
     name: Test

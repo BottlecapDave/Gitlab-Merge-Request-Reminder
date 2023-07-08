@@ -4,9 +4,9 @@
   "description": "Sends reminders of open merge requests in GitLab",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest ./src",
     "remind": "ts-node ./src/index.ts",
-    "build": "tsc -p ./src -d"
+    "build": "tsc -p ./ -d"
   },
   "author": "David Kendall",
   "license": "ISC",

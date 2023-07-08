@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./lib",
-    "rootDir": ".",
+    "rootDir": "./src",
     
     "module": "commonjs",
     "target": "es2017",
@@ -24,7 +24,6 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "removeComments": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noLib": false,
     "preserveConstEnums": false,
     "importHelpers": true,

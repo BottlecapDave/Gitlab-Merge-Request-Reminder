@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/compare/v1.4.0...v1.5.0) (2023-07-08)
+
+
+### Features
+
+* Added support to filter merge requests by labels ([879a676](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/879a67663a80d378dcb7a167b86046da62ffd517))
+
 # [1.4.0](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/compare/v1.3.0...v1.4.0) (2022-02-19)
 
 

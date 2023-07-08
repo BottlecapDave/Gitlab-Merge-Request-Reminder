@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+env:
+  TEST_GITLAB_ACCESS_TOKEN: ${{ secrets.TEST_GITLAB_ACCESS_TOKEN }}
+  TEST_PROJECT_ID: ${{ secrets.TEST_PROJECT_ID }}
 jobs:
   test:
     name: Test
@@ -36,9 +39,6 @@ jobs:
         uses: docker/setup-buildx-action@v1
       - name: Login to DockerHub
         uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

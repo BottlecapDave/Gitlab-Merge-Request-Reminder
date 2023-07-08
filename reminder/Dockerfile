@@ -2,6 +2,7 @@ FROM node:18.16-buster-slim as build
 
 WORKDIR /app
 
+COPY tsconfig.json .
 COPY package.json .
 COPY package-lock.json .
 RUN npm install

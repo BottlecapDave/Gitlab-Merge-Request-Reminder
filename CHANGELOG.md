@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/compare/v1.5.0...v1.6.0) (2023-07-12)
+
+
+### Bug Fixes
+
+* Fixed error if you dont have access to project ([88059d1](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/88059d1ff9e68eec5cd994f788942b888af89a05))
+
+
+### Features
+
+* Added support for filtering merge requests by labels ([3834bef](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/3834befa47dd2cce700ec2bcbc44f356da17f11e))
+* **gitlab:** Added option to exclude merge requests with certain labels ([49632a9](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/49632a9744cb9d7dbf3de598129873a5db982070))
+
 # [1.5.0](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/compare/v1.4.0...v1.5.0) (2023-07-08)
 
 

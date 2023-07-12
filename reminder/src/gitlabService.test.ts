@@ -7,6 +7,7 @@ function createRequestData(): IGitlabMergeRequestRequest {
     includeWorkInProgress: true,
     projectIds: [process.env.TEST_PROJECT_ID as string],
     mandatoryLabels: [],
+    excludedLabels: [],
   }
 }
 
@@ -145,5 +146,35 @@ describe('GitlabService', () => {
     expect(mergeRequests.length).toEqual(1);
     assertMergeRequest(mergeRequests[0]);
     expect(mergeRequests[0].title).toEqual('Merge request with mandatory labels');
+  })
+
+  test('when excluded label is specified but not present, then merge requests are returned', async () => {
+    const accessToken = getAccessToken();
+    const request: IGitlabMergeRequestRequest = {
+      ...createRequestData(),
+      excludedLabels: ['non-existent']
+    };
+    const service = new GitlabService();
+  
+    const mergeRequests = await service.getMergeRequests(accessToken, request);
+    
+    assertMergeRequests(mergeRequests, request.includeWorkInProgress, request.includeDraft);
+  })
+  
+  test('when excluded label is specified, then only merge requests without the excluded labels are returned', async () => {
+    const accessToken = getAccessToken();
+    const request: IGitlabMergeRequestRequest = {
+      ...createRequestData(),
+      excludedLabels: ['test-label']
+    };
+    const service = new GitlabService();
+  
+    const mergeRequests = await service.getMergeRequests(accessToken, request);
+
+    for (const mergeRequest of mergeRequests) {
+      for (const excludedLabel of request.excludedLabels) {
+        expect(mergeRequest.labels.includes(excludedLabel)).toEqual(false);
+      }
+    }
   })
 })

@@ -1,6 +1,6 @@
 # GitLab Merge Request Reminder
 
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bottlecapdave/gitlab-merge-request-reminder) [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bottlecapdave)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bottlecapdave/gitlab-merge-request-reminder)](https://hub.docker.com/r/bottlecapdave/gitlab-merge-request-reminder) [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bottlecapdave)
 
 Sends a notification to a Slack webhook highlighting open merge requests for a given GitLab repository. If no merge requests are open, then no notification will be sent.
 
@@ -14,12 +14,13 @@ Sends a notification to a Slack webhook highlighting open merge requests for a g
 | INCLUDE_WIP          | Determines if work in progress merge requests should be included. This is true by default.                  | `true` or `false` |
 | INCLUDE_DRAFT        | Determines if draft merge requests should be included. This is true by default.                            | `true` or `false` |
 | GITLAB_MANDATORY_LABELS | The labels that merge requests must have assigned to them. All labels must be present. This should be comma separated (e.g. mandatory-label-1,mandatory-label-2) | `mandatory-label-1,mandatory-label-2` |
+| GITLAB_EXCLUDED_LABELS | The labels that merge requests must not have assigned to them. Any label must be present for the merge request to be ignored. This should be comma separated (e.g. excluded-label-1,excluded-label-2) | `excluded-label-1,excluded-label-2` |
 | SLACK_WEBHOOK_URL    | The URL of the slack incoming webhook to send the notification to.                                            |                |
 | SLACK_TARGET         | The target of the slack message. This is `@here` by default. | `@here` |
 
 ## Docker
 
-This is available as a docker image, available on [docker hub](https://hub.docker.com/repository/docker/bottlecapdave/gitlab-merge-request-reminder).
+This is available as a docker image, available on [docker hub](https://hub.docker.com/r/bottlecapdave/gitlab-merge-request-reminder).
 
 ## Example Uses
 
@@ -32,7 +33,7 @@ You could create a gitlab job which is run on a [schedule](https://docs.gitlab.c
 ```
 merge-request-reminder:
   stage: notify
-  image: bottlecapdave/gitlab-merge-request-reminder:v1.0.0
+  image: bottlecapdave/gitlab-merge-request-reminder:v1.5.0
   only:
     refs:
       - schedules

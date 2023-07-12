@@ -10,6 +10,7 @@ async function run() {
         includeWorkInProgress: process.env.INCLUDE_WIP?.trim() !== "false",
         includeDraft: process.env.INCLUDE_DRAFT?.trim() !== "false",
         mandatoryLabels: (process.env.GITLAB_MANDATORY_LABELS?.trim() || "").split(','),
+        excludedLabels: (process.env.GITLAB_EXCLUDED_LABELS?.trim() || "").split(','),
         slack: {
             webhookUrl: process.env.SLACK_WEBHOOK_URL?.trim() as string,
             target: process.env.SLACK_TARGET?.trim() as string || '@here'

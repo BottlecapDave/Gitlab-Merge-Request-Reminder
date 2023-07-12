@@ -21,6 +21,7 @@ export interface IGitlabMergeRequestRequest {
     includeWorkInProgress: boolean;
     includeDraft: boolean;
     mandatoryLabels: string[];
+    excludedLabels: string[];
     gitlabBaseURL: string;
 }
 
@@ -54,6 +55,17 @@ export class GitlabService {
                                                 if (request.mandatoryLabels.length > 0) {
                                                     for (const mandatoryLabel of request.mandatoryLabels) {
                                                         if (mr.labels.includes(mandatoryLabel) === false) {
+                                                            return false;
+                                                        }
+                                                    }
+                                                }
+
+                                                return true;
+                                             })
+                                             .filter(mr => {
+                                                if (request.excludedLabels.length > 0) {
+                                                    for (const excludedLabel of request.excludedLabels) {
+                                                        if (mr.labels.includes(excludedLabel)) {
                                                             return false;
                                                         }
                                                     }

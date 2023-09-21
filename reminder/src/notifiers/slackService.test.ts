@@ -19,7 +19,9 @@ function createMergeRequests(): IGitlabMergeRequest[] {
       name: "merge request reminder test",
     },
     title: "Merge request with mandatory labels",
-    web_url: "https://gitlab.com/test/merge-request-reminder-test/-/merge_requests/1"
+    web_url: "https://gitlab.com/test/merge-request-reminder-test/-/merge_requests/1",
+    draft: false,
+    work_in_progress: false,
   },
   {
     author: {
@@ -31,7 +33,9 @@ function createMergeRequests(): IGitlabMergeRequest[] {
       name: "merge request reminder test 2",
     },
     title: "wip: Merge request ",
-    web_url: "https://gitlab.com/test/merge-request-reminder-test/-/merge_requests/2"
+    web_url: "https://gitlab.com/test/merge-request-reminder-test/-/merge_requests/2",
+    draft: false,
+    work_in_progress: false,
   }]
 }
 

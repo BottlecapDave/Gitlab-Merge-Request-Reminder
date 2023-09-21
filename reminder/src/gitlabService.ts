@@ -60,8 +60,8 @@ export class GitlabService {
             }
 
             const mergeRequests: IGitlabMergeRequest[] = resp.data || [];
-            allRequests.push(...mergeRequests.filter(mr => request.includeWorkInProgress || mr.work_in_progress === false)
-                                             .filter(mr => request.includeDraft || mr.draft === false)
+            allRequests.push(...mergeRequests.filter(mr => request.includeWorkInProgress || mr.title.toLowerCase().startsWith("wip:") === false)
+                                             .filter(mr => request.includeDraft || mr.title.toLowerCase().startsWith("draft:") === false)
                                              .filter(mr => {
                                                 if (request.mandatoryLabels.length > 0) {
                                                     for (const mandatoryLabel of request.mandatoryLabels) {

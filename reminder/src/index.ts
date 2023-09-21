@@ -3,14 +3,17 @@ import { SlackService } from "./notifiers/slackService";
 import { IReminderRequest, ReminderService } from "./reminderService";
 
 async function run() {
-    var config: IReminderRequest = {
+    const mandatoryLabelsString = (process.env.GITLAB_MANDATORY_LABELS?.trim() || "");
+    const excludedLabelsString = (process.env.GITLAB_EXCLUDED_LABELS?.trim() || "");
+    
+    const config: IReminderRequest = {
         gitlabAccessToken: process.env.GITLAB_ACCESS_TOKEN?.trim() as string,
         gitlabBaseURL: process.env.GITLAB_URL?.trim() as string || "https://gitlab.com",
         projectIds: (process.env.GITLAB_PROJECT_IDS?.trim() || "").split(','),
         includeWorkInProgress: process.env.INCLUDE_WIP?.trim() !== "false",
         includeDraft: process.env.INCLUDE_DRAFT?.trim() !== "false",
-        mandatoryLabels: (process.env.GITLAB_MANDATORY_LABELS?.trim() || "").split(','),
-        excludedLabels: (process.env.GITLAB_EXCLUDED_LABELS?.trim() || "").split(','),
+        mandatoryLabels: mandatoryLabelsString.length > 0 ? mandatoryLabelsString.split(',') : [],
+        excludedLabels: excludedLabelsString.length > 0 ? excludedLabelsString.split(',') : [],
         slack: {
             webhookUrl: process.env.SLACK_WEBHOOK_URL?.trim() as string,
             target: process.env.SLACK_TARGET?.trim() as string || '@here'

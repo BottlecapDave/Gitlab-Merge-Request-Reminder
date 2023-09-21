@@ -48,3 +48,7 @@ You can run `npm run docker-build` to build a local docker image, which can then
 ## Releases
 
 To release a new version, merge into `main`. The github CI will then create a release based on the commitizen messages.
+
+## Sponsorships
+
+If you find this useful, please consider a one time or monthly [GitHub sponsorship](https://github.com/sponsors/bottlecapdave).

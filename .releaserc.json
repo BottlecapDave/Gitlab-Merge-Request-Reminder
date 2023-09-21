@@ -9,7 +9,6 @@
         "changelogFile": "CHANGELOG.md"
       }
     ],
-    "@semantic-release/github",
     [
       "@semantic-release/exec", {
         "prepareCmd" : "npm run docker-build",
@@ -20,6 +19,11 @@
       "@semantic-release/git", {
         "assets": ["package.json", "CHANGELOG.md"],
         "message": "release: Released v${nextRelease.version} [skip ci]"
+      }
+    ],
+    [
+      "@semantic-release/exec", {
+        "publishCmd" : "ts-node .build/createGithubRelease.ts v${nextRelease.version} \"${nextRelease.notes}\""
       }
     ]
   ]

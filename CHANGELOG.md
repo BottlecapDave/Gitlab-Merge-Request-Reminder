@@ -4,7 +4,6 @@
 ### Bug Fixes
 
 * Fixed issue when merge requests were filtered out when excluded or mandatory labels were not specified and merge requests had labels specified ([2108e39](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/2108e39d1cb62815d0166bce7b56794848874f9e))
-* Updated draft and wip filtering to use fields specified in merge request object instead of title prefixes ([2a32716](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/commit/2a32716d9520cdccada67e4f498dedb4351f21fb))
 
 # [1.6.0](https://github.com/BottlecapDave/Gitlab-Merge-Request-Reminder/compare/v1.5.0...v1.6.0) (2023-07-12)
 

@@ -14,6 +14,8 @@ export interface IGitlabMergeRequest {
     };
     web_url: string;
     labels: string[];
+    draft: boolean;
+    work_in_progress: boolean;
 }
 
 export interface IGitlabMergeRequestRequest {
@@ -38,19 +40,28 @@ export class GitlabService {
         for (const projectId of request.projectIds) {
             const projectResp = await axios.get(`${request.gitlabBaseURL}/api/v4/projects/${projectId}`, requestConfig);
 
+            if (projectResp.status === 401) {
+                throw new Error(`Not authenticated to see merge requests for project '${projectId}'`);
+            }
+            else if (projectResp.status === 403) {
+                throw new Error(`Not authorised to see merge requests for project '${projectId}'`);
+            }
             if (projectResp.status === 404) {
                 throw new Error(`Failed to find project '${projectId}'`);
             }
 
             const project = projectResp.data;
             const resp = await axios.get(`${request.gitlabBaseURL}/api/v4/projects/${projectId}/merge_requests?state=opened&scope=all&sort=asc`, requestConfig);
-            if (resp.status === 403) {
+            if (resp.status === 401) {
+                throw new Error(`Not authenticated to see merge requests for project '${projectId}'`);
+            }
+            else if (resp.status === 403) {
                 throw new Error(`Not authorised to see merge requests for project '${projectId}'`);
             }
 
             const mergeRequests: IGitlabMergeRequest[] = resp.data || [];
-            allRequests.push(...mergeRequests.filter(mr => request.includeWorkInProgress || mr.title.toLowerCase().startsWith("wip:") === false)
-                                             .filter(mr => request.includeDraft || mr.title.toLowerCase().startsWith("draft:") === false)
+            allRequests.push(...mergeRequests.filter(mr => request.includeWorkInProgress || mr.work_in_progress === false)
+                                             .filter(mr => request.includeDraft || mr.draft === false)
                                              .filter(mr => {
                                                 if (request.mandatoryLabels.length > 0) {
                                                     for (const mandatoryLabel of request.mandatoryLabels) {

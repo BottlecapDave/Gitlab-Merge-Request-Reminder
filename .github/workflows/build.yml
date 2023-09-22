@@ -20,6 +20,8 @@ jobs:
         uses: asdf-vm/actions/install@v1
       - name: Install dependencies
         run: npm ci
+      - name: Build scripts
+        run: npm run build
       - name: Build Image
         run: npm run docker-build
   test:
